@@ -1,1 +1,1 @@
-# symfony2-blog
+# Symfony2 Blog Tutorial

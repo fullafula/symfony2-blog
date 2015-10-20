@@ -38,14 +38,14 @@ class CommentController extends Controller
 
         if ($form->isValid()) {
             // TODO: Persist the comment entity
-	    $em = $this->getDoctrine()
+	          $em = $this->getDoctrine()
                        ->getManager();
             $em->persist($comment);
             $em->flush();
 
             return $this->redirect($this->generateUrl('BloggerBlogBundle_blog_show', array(
                 'id' => $comment->getBlog()->getId(),
-		'slug'  => $comment->getBlog()->getSlug())) .
+		            'slug'  => $comment->getBlog()->getSlug())) .
                 '#comment-' . $comment->getId()
             );
         }
@@ -66,8 +66,6 @@ class CommentController extends Controller
         if (!$blog) {
             throw $this->createNotFoundException('Unable to find Blog post.');
         }
-
         return $blog;
     }
-
 }

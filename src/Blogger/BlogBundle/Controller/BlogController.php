@@ -35,7 +35,8 @@ class BlogController extends Controller
 
     public function newAction(Request $request)
     {
-        $form = $this->createFormBuilder(new Blog())
+        $blog = new Blog();
+        $form = $this->createFormBuilder($blog)
             ->add('title')
             ->add('author')
             ->add('blog')
@@ -64,7 +65,6 @@ class BlogController extends Controller
 
     public function deleteAction($id)
     {
-        // var_dump($post);
         $em = $this->getDoctrine()->getManager();
         $blog = $em->getRepository('BloggerBlogBundle:Blog')->find($id);
         if (!$blog) {

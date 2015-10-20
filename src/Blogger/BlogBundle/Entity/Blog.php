@@ -43,12 +43,12 @@ class Blog
     /**
      * @ORM\Column(type="string", length=20)
      */
-    protected $image;
+    protected $image = "image.jpg";
 
     /**
      * @ORM\Column(type="text")
      */
-    protected $tags;
+    protected $tags = "symblog";
 
     /**
      * @ORM\OneToMany(targetEntity="Comment", mappedBy="blog")
@@ -74,7 +74,7 @@ class Blog
 
     public function __construct()
     {
-	$this->comments = new ArrayCollection();
+	      $this->comments = new ArrayCollection();
 
         $this->setCreated(new \DateTime());
         $this->setUpdated(new \DateTime());
@@ -327,29 +327,28 @@ class Blog
 
     public function slugify($text)
     {
-	// replace non letter or digits by -
-    	$text = preg_replace('#[^\\pL\d]+#u', '-', $text);
+	      // replace non letter or digits by -
+    	  $text = preg_replace('#[^\\pL\d]+#u', '-', $text);
 
-    	// trim
-    	$text = trim($text, '-');
+    	  // trim
+    	  $text = trim($text, '-');
 
-    	// transliterate
-    	if (function_exists('iconv'))
-    	{
-		$text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
-    	}
+    	  // transliterate
+    	  if (function_exists('iconv'))
+    	  {
+		        $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
+    	  }
 
-    	// lowercase
-    	$text = strtolower($text);
+    	  // lowercase
+    	  $text = strtolower($text);
 
-    	// remove unwanted characters
-    	$text = preg_replace('#[^-\w]+#', '', $text);
+    	  // remove unwanted characters
+    	  $text = preg_replace('#[^-\w]+#', '', $text);
 
-    	if (empty($text))
-    	{
-		return 'n-a';
-    	}
-
-    	return $text;
+    	  if (empty($text))
+    	  {
+		        return 'n-a';
+    	  }
+    	  return $text;
     }
 }

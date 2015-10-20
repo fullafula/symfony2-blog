@@ -22,6 +22,20 @@ BloggerBlogBundle_contact:
     requirements:
         _method:  GET|POST
 
+BloggerBlogBundle_new:
+    pattern:  /new
+    defaults: { _controller: BloggerBlogBundle:Blog:new }
+    requirements:
+        _method:  GET|POST
+
+BloggerBlogBundle_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: BloggerBlogBundle:Blog:delete }
+
+BloggerBlogBundle_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: BloggerBlogBundle:Blog:edit }
+
 BloggerBlogBundle_blog_show:
     pattern:  /{id}/{slug}
     defaults: { _controller: BloggerBlogBundle:Blog:show }

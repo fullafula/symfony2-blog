@@ -137,6 +137,5 @@ function has_color_support()
             $support = function_exists('posix_isatty') && @posix_isatty(STDOUT);
         }
     }
-
     return $support;
 }
